@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Show</title>
+    <style>
+        *{margin: 0px;padding: 0px;box-sizing: border-box;}
+        .container{
+            height: 50vh;
+            padding: 1% 5%;
+            background-color: green;
+            display: flex;
+            flex-direction: column;
+        }
+        img{width: 100%;height: 100%;border-radius: 15px;}
+        button{
+            padding: 5px 15px;
+            background-color: gold;
+            color: black;
+            border: none;
+            border-radius: 100px;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .div{
+            display: flex;
+            justify-content: space-between;
+            padding: 2%;
+            margin-top: -220px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+
+      <img src="" alt="">
+      <div class="div">
+        <button onclick="prev()">Prev</button>
+        <button onclick="start()">Stop / Start</button>
+        <button onclick="next()">Next</button>
+      </div>
+    </div>
+    
+</body>
+<script>
+    
+    let image={
+        img1:'https://cinemavehicles.com/images/T142566099',
+        img2:"https://cinemavehicles.com/images/T142566121",
+        img3:"https://cinemavehicles.com/images/T142566119",
+        img4:"https://cinemavehicles.com/images/T142566119",
+        img5:"https://cinemavehicles.com/images/T142566113",
+        img6:"https://cinemavehicles.com/images/T142566112",
+        img7:"https://cinemavehicles.com/images/T142566100",
+        img8:"https://cinemavehicles.com/images/T142566114",
+        img9:"https://cinemavehicles.com/images/T142567166",
+        img10:"https://cinemavehicles.com/images/T142567163",
+        img11:"https://cinemavehicles.com/images/T142566106",
+        img12:"https://cinemavehicles.com/images/T142566061",
+        img13:"https://cinemavehicles.com/images/T142566045",
+        img14:"https://cinemavehicles.com/images/T142566122",
+        img15:"https://cinemavehicles.com/images/T142566101",
+        img16:"https://cinemavehicles.com/images/T142566110",
+        img17:"https://cinemavehicles.com/images/T142566055",
+        img18:"https://cinemavehicles.com/images/T142566123",
+        img19:"https://cinemavehicles.com/images/T142566053",
+        img20:"https://www.premium.co.th/wp-content/uploads/2023/01/energy-saving-green-500-%C3%97-200px-500-%C3%97-300px.png",
+    }
+    
+    let number=1;
+    let interval;
+   
+    function show(){
+        let final='img'+number
+        console.log(final)
+        let container=document.querySelector(".container")
+    let img=document.querySelector("img")
+        img.src=image[final];
+        
+        
+    }
+    function next(){
+        if(number==20){
+            number=0;
+            number++
+        }
+        number++
+        console.log(number)
+        show()
+    }
+    let s=1
+    function start(){
+        if(s==0){
+            s++
+            console.log(s)
+            stopSlideshow()
+            
+            
+        }else {
+            s=0;
+            console.log(s)
+            dot()
+
+        }
+        
+    }
+    function stopSlideshow() {
+    clearInterval(interval);
+}
+
+    
+    function dot(){
+          interval=  setInterval(function(){
+                console.log(number)
+                if(number==20){
+                    number=1;
+                    let final='img'+number
+        console.log(final)
+        let container=document.querySelector(".container")
+    let img=document.querySelector("img")
+        img.src=image[final];
+                }else{
+                    number++;
+                    let final='img'+number
+        console.log(final)
+        let container=document.querySelector(".container")
+    let img=document.querySelector("img")
+        img.src=image[final];
+                }
+            },1000)
+        }
+    
+    function prev(){
+        if(number==1){
+            
+            number=20
+        }else{
+            number--
+        }
+        
+        console.log(number)
+        show()
+    }
+    show()
+</script>
+</html>
